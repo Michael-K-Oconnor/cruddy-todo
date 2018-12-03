@@ -38,7 +38,7 @@ const writeCounter = (count, callback) => {
 
 // Public API - Fix this function //////////////////////////////////////////////
 
-exports.getNextUniqueId = (cb) => {
+exports.getNextUniqueId = (callback) => {
   readCounter((err, data) => {
     if(err) { 
       throw ('Error reading counter'); 
@@ -47,14 +47,15 @@ exports.getNextUniqueId = (cb) => {
         if (err) { 
           throw('Error writing to file in writeCounter'); 
         } else {
-          cb(null, updatedData);
+          callback(null, updatedData);
         }
       }); 
     }
   })
   
   
-  // counter = counter + 1;
+  counter = counter + 1;
+  return counter;
   // return zeroPaddedNumber(counter);
 };
 
